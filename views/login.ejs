@@ -1,0 +1,50 @@
+<% layout('layouts/notAuthorized') -%>
+<div class="text-center w-75 m-auto">
+    <a>
+       <span><img src="<%= sitelogo %>" alt="<%= siteTitle %>" style="height: 85px; width: 100px"></span> 
+    </a>
+    <p class="text-muted mb-4 mt-3">Enterd your email address and password to access admin panel.</p>
+</div>
+<form id="loginForm" method="post">
+    <div class="form-group mb-3">
+        <label>Email address</label>
+        <input class="form-control" value="my-university@yopmail.com" type="email" name="email" placeholder="Email" autocomplete="off">
+        <div class="text-danger email"></div>
+    </div>
+    <div class="form-group mb-3">
+        <label>Password</label>
+        <input class="form-control" value="1234" type="password" name="password" placeholder="Password" autocomplete="off">
+        <div class="text-danger password"></div>
+    </div>
+    <div class="form-group mb-0 text-center">
+        <button id="submitLoginForm" class="btn btn-primary btn-block" type="submit"> Log In</button>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+       
+        $("#loginForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function (form) {
+                $('#submitLoginForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                email: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 80,
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: ''
+        });
+    })
+</script>

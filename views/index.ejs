@@ -1,0 +1,113 @@
+﻿<% layout('layouts/list') -%>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">
+                    Dashboard
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-xl-3">
+            <a href="#">
+                <div class="widget-rounded-circle card-box">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                <i class="fas fa-users font-22 avatar-title text-info"></i>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="text-right">
+                                <h3 class="text-dark mt-1">
+                                    <%= totalUsers %>
+                                </h3>
+                                <p class="text-muted mb-1 text-truncate">Total Users</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <a href="/admin/university">
+                <div class="widget-rounded-circle card-box">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                <i class="fas fa-building font-22 avatar-title text-info"></i>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="text-right">
+                                <h3 class="text-dark mt-1">
+                                    <%= totalUniversities %>
+                                </h3>
+                                <p class="text-muted mb-1 text-truncate">Total Universities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <a href="/admin/agent">
+                <div class="widget-rounded-circle card-box">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                <i class="fas fa-user-secret font-22 avatar-title text-info"></i>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="text-right">
+                                <h3 class="text-dark mt-1">
+                                    <%= totalAgents %>
+                                </h3>
+                                <p class="text-muted mb-1 text-truncate">Total Agents</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">
+                    USERS (This month)
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-xl-3">
+            <a href="#">
+                <div class="widget-rounded-circle card-box">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                <i class="fas fa-users font-22 avatar-title text-info"></i>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="text-right">
+                                <h3 class="text-dark mt-1">
+                                    <%= thisMonthUsers %>
+                                </h3>
+                                <p class="text-muted mb-1 text-truncate">Total Users</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>

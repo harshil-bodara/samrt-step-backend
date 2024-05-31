@@ -1,0 +1,259 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/agent/users">Users</a></li>
+                    <li class="breadcrumb-item active">View</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="page-title">User Details</h4>
+
+                <ul class="nav nav-tabs nav-bordered">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                            User Details
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/agent/users/universities/<%= user._id %>" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                            Applied University
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/agent/users/chat/<%= user._id %>" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                            Chat to user
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="home-b1">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> Personal Information</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Full Name :</h4>
+                                            <p class="mb-3"> <%= user.fullName %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Email :</h4>
+                                            <p class="mb-3"><%= user.email %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Date of Birth :</h4>
+                                            <p class="mb-3"> <%= user.dob %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Nationality :</h4>
+                                            <p class="mb-0"> <%= user.nationality %></p>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> Academic Background</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Highest Level of Education Completed :</h4>
+                                            <p class="mb-3"> <%= user.academicBackground.highestEducation %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Current Institution :</h4>
+                                            <p class="mb-3"><%= user.academicBackground.currentInstitution %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Field of Study/Major :</h4>
+                                            <p class="mb-3"> <%= user.academicBackground.fieldOfStudy %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Year of Graduation or Expected Graduation :</h4>
+                                            <p class="mb-0"> <%= user.academicBackground.graduationYear %></p>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> Study Preferences</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Intended Level of Study :</h4>
+                                            <p class="mb-3"> <%= user.studyPreferences.intendedLevelOfStudy %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Preferred Field of Study :</h4>
+                                            <p class="mb-3"><%= user.studyPreferences.preferredFieldOfStudy %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Desired Course Duration :</h4>
+                                            <p class="mb-3"> <%= user.studyPreferences.desiredCourseDuration %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Language Proficiency :</h4>
+                                            <p class="mb-0"> <%= user.studyPreferences.languageProficiency %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">City :</h4>
+                                            <p class="mb-0"> <%= user.studyPreferences.preferredStudyLocation.city %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Country :</h4>
+                                            <p class="mb-0"> <%= user.studyPreferences.preferredStudyLocation.stateCountry %></p>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> University Preferences</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Desired Reputation of University :</h4>
+                                            <p class="mb-3"> <%= user.universityPreferences.desiredReputationOfUniversity %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Specific Universities of Interest :</h4>
+                                            <p class="mb-3"><%= user.universityPreferences.universitiesOfInterest.join(", ") %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Preferred Learning Environment :</h4>
+                                            <p class="mb-3"> <%= user.universityPreferences.preferredLearningEnvironment %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Availability of Scholarships or Financial Aid :</h4>
+                                            <p class="mb-0"> <%= user.universityPreferences.availabilityOfScholarships %></p>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> Study Goals and Career Aspirations</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Short-term Study Goals :</h4>
+                                            <p class="mb-3"> <%= user.studyGoalsAndCareerAspirations.shortTermStudyGoals %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Long-term Career Aspirations :</h4>
+                                            <p class="mb-3"><%= user.studyGoalsAndCareerAspirations.longTermCareerAspirations %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Expectations from the Study Abroad Experience :</h4>
+                                            <p class="mb-3"> <%= user.studyGoalsAndCareerAspirations.studyAbroadExpectations %></p>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> Additional Information</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Any Special Requirements or Considerations :</h4>
+                                            <p class="mb-3"> <%= user.additionalInformation.specialRequirements %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Previous Study Abroad Experience :</h4>
+                                            <p class="mb-3"><%= user.additionalInformation.previousStudyAbroadExperience %></p>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Any Other Comments or Preferences :</h4>
+                                            <p class="mb-3"> <%= user.additionalInformation.otherComments %></p>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <h5 class="mb-3 mt-0 text-uppercase bg-light p-2"><i class="mdi mdi-account-circle me-1"></i> Documents</h5>
+                                        <div class="">
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Passport :</h4>
+                                            <% if(user.passport){ %>
+                                            <p class="mb-3"><a href="<%= process.env.SITE_URL %>/<%= user.passport %>" target="_blank" download>View Passport</a> </p>
+                                            <% }else{ %>
+                                                <p class="mb-3 text-danger">No Document Uploaded Yet</p>
+                                            <% } %>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Secondary :</h4>
+                                            <% if(user.secondary){ %>
+                                            <p class="mb-3"><a href="<%= process.env.SITE_URL %>/<%= user.secondary %>" target="_blank" download>View Secondary Document</a> </p>
+                                            <% }else{ %>
+                                                <p class="mb-3 text-danger">No Document Uploaded Yet</p>
+                                            <% } %>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Senior :</h4>
+                                            <% if(user.senior){ %>
+                                            <p class="mb-3"><a href="<%= process.env.SITE_URL %>/<%= user.senior %>" target="_blank" download>View Senior Document</a> </p>
+                                            <% }else{ %>
+                                                <p class="mb-3 text-danger">No Document Uploaded Yet</p>
+                                            <% } %>
+
+                                            <h4 class="font-13 text-muted text-uppercase mb-1">Bachelor :</h4>
+                                            <% if(user.bachelor){ %>
+                                            <p class="mb-3"><a href="<%= process.env.SITE_URL %>/<%= user.bachelor %>" target="_blank" download>View Bachelor Document</a> </p>
+                                            <% }else{ %>
+                                                <p class="mb-3 text-danger">No Document Uploaded Yet</p>
+                                            <% } %>
+
+                                            <% if(user.customDocuments){ %>
+                                                <% for(var i=0; i < user.customDocuments.length; i++){ %>
+                                                    <h4 class="font-13 text-muted text-uppercase mb-1"><%= user.customDocuments[i].name %> :</h4>
+                                                    <% if(user.customDocuments[i].path){ %>
+                                                    <p class="mb-3"><a href="<%= process.env.SITE_URL %>/<%= user.customDocuments[i].path %>" target="_blank" download>View <%= user.customDocuments[i].name %></a> </p>
+                                                    <% }else{ %>
+                                                        <p class="mb-3 text-danger">No Document Uploaded Yet</p>
+                                                    <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+
+                                        <div class="mt-2 bg-light p-3 rounded">
+                                            <form method="post" class="needs-validation" id="addCustomDocForm">
+                                                <div class="row">
+                                                    <div class="col mb-2 mb-sm-0">
+                                                        <input type="text" class="form-control border-0"
+                                                            placeholder="Enter document name" required="" name="docName">
+                                                        <div class="invalid-feedback">
+                                                            Please enter document name
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-auto">
+                                                        <div class="btn-group">
+                                                            <button type="submit" id="submitCustomDocForm"
+                                                                class="btn btn-success w-100">
+                                                                <i class="fe-send"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                </div>
+                                                <!-- end row-->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="profile-b1">
+                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                        <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.userManager').addClass('active');
+</script>

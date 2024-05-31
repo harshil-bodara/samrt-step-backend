@@ -1,0 +1,424 @@
+﻿<% layout('../layouts/admin') -%>
+	<div class="row">
+		<div class="col-12">
+			<div class="page-title-box">
+				<div class="page-title-left">
+					<ol class="breadcrumb m-0">
+						<li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+						<li class="breadcrumb-item">
+							<a href="/admin/university">University</a>
+						</li>
+						<li class="breadcrumb-item active">
+							<a href="javascript: void(0);">Add</a>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<form method="post" id="addUniversityForm" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="page-title-box">
+					<h4 class="page-title">Add University</h4>
+				</div>
+			</div>
+			<div class="col-lg-6 text-right">
+				<div class="form-group mb-3 text-right">
+					<button id="submitaddUniversityForm" type="submit" class="btn btn-primary waves-effect waves-light">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Name <span class="text-danger">*</span></label>
+									<input type="text" name="university_name" class="form-control" placeholder="Title"
+										autocomplete="off" />
+									<div class="text-danger university_name"></div>
+								</div>
+							</div>
+
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Duration (Full Time)</label>
+									<input type="number" name="full_time_months" class="form-control"
+										placeholder="Full Time Duration" />
+									<div class="text-danger full_time_months"></div>
+								</div>
+							</div>
+
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Duration (Part Time)</label>
+									<input type="number" name="part_time_months" class="form-control"
+										placeholder="Part Time Duration" />
+									<div class="text-danger part_time_months"></div>
+								</div>
+							</div>
+
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Disciplines</label>
+									<select class="form-control" name="discipline" multiple>
+										<option>Select</option>
+										<% for(var i=0; i < disciplines.length; i++) { %>
+											<option value="<%= disciplines[i]._id %>">
+												<%= disciplines[i].name %>
+											</option>
+											<% } %>
+									</select>
+									<div class="text-danger discipline"></div>
+								</div>
+							</div>
+							
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Location</label>
+									<select class="form-control" name="location">
+										<option value="">Select Location</option>
+										<% for(var i=0; i < LOCATION.length; i++) { %>
+											<option value="<%= LOCATION[i] %>">
+												<%= LOCATION[i] %>
+											</option>
+											<% } %>
+									</select>
+									<div class="text-danger location"></div>
+								</div>
+							</div>
+
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Tags <small>add comma (,) between tags</small></label>
+									<input type="text" name="tags" class="form-control"
+										placeholder="Online, On Campus, Offline" />
+									<div class="text-danger tags"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Tuition Fees</label>
+									<input type="number" name="tuition_fees" class="form-control" placeholder="$2000" />
+									<div class="text-danger tuition_fees"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Living Costs</label>
+									<input type="number" name="living_costs" class="form-control" placeholder="$2000" />
+									<div class="text-danger living_costs"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Apply Date</label>
+									<input type="date" name="apply_date" class="form-control" />
+									<div class="text-danger apply_date"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Start Date</label>
+									<input type="date" name="start_date" class="form-control" />
+									<div class="text-danger start_date"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Language</label>
+									<input type="text" name="language" class="form-control" placeholder="English" />
+									<div class="text-danger language"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Min Degree Requirement</label>
+									<select name="min_degree" class="form-control">
+										<option value="">Select degree</option>
+										<option value="High school diploma">High school diploma</option>
+										<option value="Bachelor's degree">Bachelor's degree</option>
+										<option value="Master's degree">Master's degree</option>
+										<option value="Ph.D degree">Ph.D degree</option>
+									</select>
+									<div class="text-danger min_degree"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Min Experience Requirement</label>
+									<select name="min_experience" class="form-control">
+										<option value="">Select experience</option>
+										<option value="No experience">No experience</option>
+										<option value="1 Year">1 Year</option>
+										<option value="2 Year">2 Year</option>
+										<option value="3-4 Year">3-4 Year</option>
+										<option value="5+ Year">5+ Year</option>
+									</select>
+									<div class="text-danger min_experience"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Min Grade Requirement</label>
+									<select name="min_grade" class="form-control">
+										<option value="">Select grade</option>
+										<option value="High Distinction">High Distinction (85-100%)</option>
+										<option value="Distinction">Distinction (75-84%)</option>
+										<option value="Credit">Credit (65-74%)</option>
+										<option value="Pass">Pass (50-64%)</option>
+										<option value="Near Pass">Near Pass (40-49%)</option>
+									</select>
+									<div class="text-danger min_grade"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label class="mb-2">English Requirement</label>
+									<div class="pl-2">
+										<div class="form-group row">
+											<label for="englishRequirement1" class="col-sm-4 col-form-label">IELTS :</label>
+											<div class="col-sm-8">
+												<input name="english1" placeholder="add score between 0 and 9" type="number" class="form-control" id="englishRequirement1" >
+												<div class="text-danger english1"></div>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="englishRequirement2" class="col-sm-4 col-form-label">PTE Academic :</label>
+											<div class="col-sm-8">
+												<input name="english2" placeholder="add score between 10 and 90" type="number" class="form-control" id="englishRequirement2" >
+												<div class="text-danger english2"></div>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="englishRequirement3" class="col-sm-4 col-form-label">TOEFL (paper based) :</label>
+											<div class="col-sm-8">
+												<input name="english3" placeholder="add score between 310 and 677" type="number" class="form-control" id="englishRequirement3" >
+												<div class="text-danger english3"></div>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="englishRequirement4" class="col-sm-4 col-form-label">TOEFL (internet based) :</label>
+											<div class="col-sm-8">
+												<input name="english4" placeholder="add score between 0 and 120" type="number" class="form-control" id="englishRequirement4" >
+												<div class="text-danger english4"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>About</label>
+									<textarea name="about_short_content" class="form-control"></textarea>
+									<div class="text-danger about_short_content"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Overview</label>
+									<textarea name="overview" class="form-control"></textarea>
+									<div class="text-danger overview"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Course Include</label>
+									<textarea name="course_include" class="form-control"></textarea>
+									<div class="text-danger course_include"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Academic Requirements</label>
+									<textarea name="academic_requirements" class="form-control"></textarea>
+									<div class="text-danger academic_requirements"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Student Insurance</label>
+									<textarea name="student_insurance" class="form-control"></textarea>
+									<div class="text-danger student_insurance"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Other Requirements</label>
+									<textarea name="other_requirements" class="form-control"></textarea>
+									<div class="text-danger other_requirements"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Scholarships Information</label>
+									<textarea name="scholarships_information" class="form-control"></textarea>
+									<div class="text-danger scholarships_information"></div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group mb-3">
+									<label>Work Permits</label>
+									<textarea name="work_permits" class="form-control"></textarea>
+									<div class="text-danger work_permits"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<script>
+		$(".categoryManager").addClass("active");
+	</script>
+	<script>
+		$(document).ready(function () {
+			$("#addUniversityForm").validate({
+				errorPlacement: function (error, element) {
+					const name = $(element).attr("name");
+					error.appendTo($("." + name));
+				},
+				submitHandler: function (form) {
+					$("#submitaddUniversityForm").attr("disabled", "disabled");
+					form.submit();
+				},
+				rules: {
+					university_name: {
+						required: true,
+						minlength: 3,
+						maxlength: 30,
+					},
+					full_time_months: {
+						required: true,
+						number: true,
+						min: 1,
+						max: 99,
+					},
+					part_time_months: {
+						required: true,
+						number: true,
+						min: 1,
+						max: 99,
+					},
+					tags: {
+						required: true,
+						minlength: 2,
+						maxlength: 255,
+					},
+					discipline: {
+						required: true,
+					},
+					location: {
+						required: true,
+					},
+					tuition_fees: {
+						required: true,
+						number: true,
+						minlength: 1,
+						maxlength: 9,
+					},
+					living_costs: {
+						required: true,
+						number: true,
+						minlength: 1,
+						maxlength: 9,
+					},
+					apply_date: {
+						required: true,
+						date: true
+					},
+					start_date: {
+						required: true,
+						date: true
+					},
+					language: {
+						required: true,
+						minlength: 3,
+						maxlength: 30,
+					},
+					about_short_content: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					overview: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					course_include: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					academic_requirements: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					student_insurance: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					other_requirements: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					scholarships_information: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					work_permits: {
+						required: true,
+						minlength: 3,
+						maxlength: 2500,
+					},
+					min_degree: {
+						required: true,
+					},
+					min_experience: {
+						required: true,
+					},
+					min_grade: {
+						required: true,
+					},
+					english1: {
+						min: 0,
+						max: 9
+					},
+					english2: {
+						min: 10,
+						max: 90
+					},
+					english3: {
+						min: 310,
+						max: 677
+					},
+					english4: {
+						min: 0,
+						max: 120
+					},
+				},
+				messages: "",
+			});
+		});
+		$(".categoryManager").addClass("active");
+	</script>

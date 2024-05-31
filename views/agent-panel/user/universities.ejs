@@ -1,0 +1,71 @@
+<% layout('../layouts/list') -%>
+    <div class="row ">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-left">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/agent/users">Users</a></li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="page-title-box">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="page-title">User Details</h4>
+
+                    <ul class="nav nav-tabs nav-bordered">
+                        <li class="nav-item">
+                            <a href="/agent/users/details/66162194ce9a1c6f9820583a" data-bs-toggle="tab"
+                                aria-expanded="false" class="nav-link">
+                                User Details
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" data-bs-toggle="tab" aria-expanded="true"
+                                class="nav-link active">
+                                Applied University
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/agent/users/chat/<%= user._id %>" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                Chat to user
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="home-b1">
+
+                        </div>
+                        <div class="tab-pane show active" id="profile-b1">
+                            <table class="table nowrap" data-id="<%= user.id %>" id="agent-users-universities-datatable" data-caption="Universities List">
+                                <thead>
+                                    <tr>
+                                        <th>S.NO.</th>
+                                        <th>University Name</th>
+                                        <!-- <th>EMAIL</th> -->
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="row tableLoader">
+                                <div class="col-sm-12 text-center">
+                                    <div class="spinner-border avatar-md text-primary m-2" role="status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

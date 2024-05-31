@@ -1,0 +1,164 @@
+<% layout('../layouts/list') -%>
+
+    <style>
+        .conversation-list .odd .conversation-text {
+            width: auto !important;
+        }
+    </style>
+    <div class="row ">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-left">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/agent/users">Users</a></li>
+                        <li class="breadcrumb-item active">View</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="page-title-box">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="page-title">User Details</h4>
+
+                    <ul class="nav nav-tabs nav-bordered">
+                        <li class="nav-item">
+                            <a href="/agent/users/details/66162194ce9a1c6f9820583a" data-bs-toggle="tab"
+                                aria-expanded="false" class="nav-link">
+                                User Details
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                Applied University
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/agent/users/universities/<%= user._id %>" data-bs-toggle="tab"
+                                aria-expanded="true" class="nav-link active">
+                                Chat to user
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="home-b1">
+
+                        </div>
+                        <div class="tab-pane" id="profile-b1">
+
+                        </div>
+                        <div class="tab-pane show active" id="chat-b1">
+                            <ul class="conversation-list" data-simplebar="init"
+                                style="max-height: 460px; overflow-y: auto;">
+                                <div class="simplebar-wrapper" style="margin: 0px -15px;">
+                                    <div class="simplebar-height-auto-observer-wrapper">
+                                        <div class="simplebar-height-auto-observer"></div>
+                                    </div>
+                                    <div class="simplebar-mask">
+                                        <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                            <div class="simplebar-content-wrapper" tabindex="0" role="region"
+                                                aria-label="scrollable content"
+                                                style="height: auto; overflow: hidden scroll;">
+                                                <div class="simplebar-content" style="padding: 0px 15px;">
+                                                    <% for(var i=0; i < chats.length; i++) { %>
+                                                    <li class="clearfix d-flex align-items-center <%= chats[i].sender === 'agent' ? 'odd flex-row-reverse' : '' %>" style="gap: 12px">
+                                                        <div class="conversation-text w-auto">
+                                                            <div class="ctext-wrap">
+                                                                <i><%= chats[i].sender === 'agent' ? 'You' : 'User'  %></i>
+                                                                <p>
+                                                                    <%= chats[i].message  %>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <% if(chats[i].sender === 'agent'){ %>
+                                                        <a href="/agent/users/chat-delete/<%= chats[i]._id %>/<%= userId %>" onclick="return confirm('Are you sure?')">
+                                                            <i class="fe-trash"></i>
+                                                        </a>
+                                                        <% } %>
+                                                    </li>
+                                                    <!-- <li class="clearfix odd d-flex align-items-center flex-row-reverse"
+                                                        style="gap: 12px">
+                                                        <div class="conversation-text w-auto">
+                                                            <div class="ctext-wrap">
+                                                                <i>Geneva M</i>
+                                                                <p>
+                                                                    Hi, How are you? What about our next meeting?
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <i class="fe-trash"></i>
+                                                    </li> -->
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mt-2 bg-light p-3 rounded">
+                                        <form method="post" class="needs-validation" id="chatForm">
+                                            <div class="row">
+                                                <div class="col mb-2 mb-sm-0">
+                                                    <input type="text" class="form-control border-0"
+                                                        placeholder="Enter your text" required="" name="chat">
+                                                    <div class="invalid-feedback">
+                                                        Please enter your messsage
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-auto">
+                                                    <div class="btn-group">
+                                                        <button type="submit" id="submitChatForm"
+                                                            class="btn btn-success chat-send w-100">
+                                                            <i class="fe-send"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                            </div>
+                                            <!-- end row-->
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end col-->
+                            </div>
+                            <!-- end row -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#chatForm").validate({
+                errorPlacement: function (error, element) {
+                    const name = $(element).attr("name");
+                    error.appendTo($("." + name));
+                },
+                submitHandler: function (form) {
+                    $("#submitChatForm").attr("disabled", "disabled");
+                    form.submit();
+                },
+                rules: {
+                    chat: {
+                        required: true,
+                        minlength: 1,
+                        maxlength: 599,
+                    },
+                },
+                messages: "",
+            });
+        });
+        $(".categoryManager").addClass("active");
+    </script>
